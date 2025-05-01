@@ -23,32 +23,29 @@ CIPHERS = {
     "Homophonic Substitution": {
         "description": homophonic.description,
         "encrypt": homophonic.encrypt,
-        "decrypt": homophonic.decrypt,
-        "uses_shift": False
+        "decrypt": homophonic.decrypt
     },
     "Monoalphabetic Substitution": {
         "description": monoalphabetic.description,
         "encrypt": monoalphabetic.encrypt,
-        "decrypt": monoalphabetic.decrypt,
-        "uses_shift": False
+        "decrypt": monoalphabetic.decrypt
     },
     "Nomenclator Cipher": {
         "description": nomenclator.description,
         "encrypt": nomenclator.encrypt,
-        "decrypt": nomenclator.decrypt,
-        "uses_shift": False
+        "decrypt": nomenclator.decrypt
     },
     "Polyalphabetic Cipher": {
         "description": polyalphabetic.description,
         "encrypt": polyalphabetic.encrypt,
         "decrypt": polyalphabetic.decrypt,
-        "uses_shift": False
+        "uses_keyword": True
     },
     "Transposition Cipher": {
         "description": transposition.description,
         "encrypt": transposition.encrypt,
         "decrypt": transposition.decrypt,
-        "uses_shift": False
+        "uses_keyword": True
     },
     "Stenography (Explination)": {
         "description": stenography.description,
@@ -56,16 +53,14 @@ CIPHERS = {
         "decrypt": stenography.decrypt
     },
     "Null Cipher": {
-        "description": "Coming soon...",
+        "description": "Coming soon.",
         "encrypt": lambda text, shift=None: "Not implemented",
-        "decrypt": lambda text, shift=None: "Not implemented",
-        "uses_shift": False
+        "decrypt": lambda text, shift=None: "Not implemented"
     },
     "True Codes": {
-        "description": "Coming soon...",
+        "description": "Coming soon.",
         "encrypt": lambda text, shift=None: "Not implemented",
-        "decrypt": lambda text, shift=None: "Not implemented",
-        "uses_shift": False
+        "decrypt": lambda text, shift=None: "Not implemented"
     },
 }
 
@@ -137,10 +132,14 @@ shift_label = tk.Label(right_frame, text="Shift Amount (1–25):", bg=DARK_BG, f
 shift_var = tk.StringVar(value="3")
 shift_entry = tk.Entry(right_frame, textvariable=shift_var, bg=ENTRY_BG, fg=ENTRY_TEXT, insertbackground=ENTRY_TEXT)
 
-# Keyword Input
+# Keyword input
 keyword_label = tk.Label(right_frame, text="Enter Keyword:", bg=DARK_BG, fg=LIGHT_TEXT)
 keyword_var = tk.StringVar(value="KEY")
-keyword_entry = tk.Entry(right_frame, textvariable=keyword_var, bg=ENTRY_BG, fg=ENTRY_TEXT, insertbackground=ENTRY_TEXT)
+keyword_entry = tk.Entry(right_frame, textvariable=keyword_var,
+                         bg=ENTRY_BG, fg=ENTRY_TEXT, insertbackground=ENTRY_TEXT)
+# Pack keyword fields before buttons
+keyword_label.pack()
+keyword_entry.pack()
 
 # Buttons
 button_frame = tk.Frame(right_frame, bg=DARK_BG)
