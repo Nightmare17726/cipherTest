@@ -11,6 +11,8 @@ from ciphers import nomenclator # External Nomenclator Cipher logic
 from ciphers import polyalphabetic # External Polyalphabetic Cipher logic
 from ciphers import transposition # External Transposition Cipher logic
 from ciphers import stenography # External Stenography Explaination
+from ciphers import null_cipher # External Null Cipher logic
+from ciphers import true_codes # External True Codes logic
 
 # Cipher registry
 CIPHERS = {
@@ -40,7 +42,7 @@ CIPHERS = {
         "encrypt": polyalphabetic.encrypt,
         "decrypt": polyalphabetic.decrypt,
         "uses_keyword": True
-    },
+    }, 
     "Transposition Cipher": {
         "description": transposition.description,
         "encrypt": transposition.encrypt,
@@ -53,15 +55,15 @@ CIPHERS = {
         "decrypt": stenography.decrypt
     },
     "Null Cipher": {
-        "description": "Coming soon.",
-        "encrypt": lambda text, shift=None: "Not implemented",
-        "decrypt": lambda text, shift=None: "Not implemented"
+        "description": null_cipher.description,
+        "encrypt": null_cipher.encrypt,
+        "decrypt": null_cipher.decrypt
     },
     "True Codes": {
-        "description": "Coming soon.",
-        "encrypt": lambda text, shift=None: "Not implemented",
-        "decrypt": lambda text, shift=None: "Not implemented"
-    },
+        "description": true_codes.description,
+        "encrypt": true_codes.encrypt,
+        "decrypt": true_codes.decrypt
+    }
 }
 
 # GUI Setup
